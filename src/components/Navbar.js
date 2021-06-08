@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components/macro'; 
 import { Link } from 'react-router-dom';
 import { menuData } from '../components/data/MenuData';
-import { Button } from './Button';
+import { Button } from '../components/Button';
 import {FaBars} from 'react-icons/fa';
 
 const Nav = styled.nav`
@@ -75,12 +75,12 @@ margin-right: 24px;
 
 
 
-const Navbar = () => {
+const Navbar = ({ toggle }) => {
     return (
         
         <Nav>
             <Logo to='/'>HWAN</Logo>
-            <MenuBars />
+            <MenuBars onClick={toggle} />
             <NavMenu>
                 {menuData.map((item, index) => (
                     <NavMenuLinks to={item.link} key={index}>
