@@ -1,4 +1,5 @@
 import React from 'react';
+import Dropdown from './components/Dropdown';
 import './App.css';
 import Navbar from './components/Navbar';
 import GlobalStyle from './globalStyles';
@@ -10,6 +11,7 @@ function App() {
     <>
       <GlobalStyle />
       <Navbar />
+      <Dropdown />
       <Hero slides={SliderData} />
     </>
   );
