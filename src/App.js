@@ -1,25 +1,32 @@
-import React, {useState} from 'react';
-import Dropdown from './components/Dropdown';
-import './App.css';
-import Navbar from './components/Navbar';
-import GlobalStyle from './globalStyles';
-import Hero from './components/Hero';
-import { SliderData } from './components/data/SliderData';
+import Home from "./pages/home/Home";
+import TopBar from "./components/topbar/TopBar";
+import Single from "./pages/single/Single";
+import Write from "./pages/write/Write";
+import Settings from "./pages/settings/Settings";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
+import { BrowserRouter as Router, Switch, Route, }  from "react-router-dom";
+
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
-
+   const user = false;
   return (
-    <>
-      <GlobalStyle />
-      <Navbar toggle={toggle} />
-      <Dropdown isOpen={isOpen} toggle={toggle} />
-      <Hero slides={SliderData} />
-    </>
+    <Router>
+      <TopBar />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/register">{user ? <Home/> :<Register />}</Route>
+        <Route path="/login">{user ? <Home/> :<Login />}</Route>
+        <Route path="/write">{user ? <Write/> :<Register />}</Route>
+        <Route path="/settings"> {user ? <Settings/> :<Register />}</Route>
+        <Route path="/post/:postId">
+          <Single />
+        </Route>
+      </Switch>
+
+    </Router>
   );
 }
 
